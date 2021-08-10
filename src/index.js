@@ -1,43 +1,70 @@
+import React from "react";
+import ReactDOM from "react-dom";
+
 import { createStore } from "redux";
-
-const reducer = (state = 0, action) => {
-  switch (action.type) {
-    case "INC":
-      return state + 1;
-    case "DEC":
-      return state - 1;
-    case "RND":
-      return state + action.value;
-    default:
-      return state;
-  }
-};
-
-// action creator
-const inc = () => ({ type: "INC"})
-const dec = () => ({ type: "DEC"})
-const rnd = (value) => ({ type: "RND", value})
+import reducer from "./reducer";
+// import { inc, dec, rnd } from "./actions";
+// import * as actions from "./actions";
+import App from "./components/app";
+import { Provider } from "react-redux";
 
 const store = createStore(reducer);
+// const { dispatch, getState, subscribe } = store;
 
-document.getElementById("inc").addEventListener("click", () => {
-  store.dispatch(inc());
-});
+// const bindActionCreator = (creator, dispatch) => (...args) => {
+//   dispatch(creator(...args))
+// }
 
-document.getElementById("dec").addEventListener("click", () => {
-  store.dispatch(dec());
-});
+// const {incDispatch, decDispatch, rndDispatch} = bindActionCreators(
+//   { incDispatch: inc, decDispatch: dec, rndDispatch: rnd },
+//   dispatch
+// );
 
-document.getElementById("rnd").addEventListener("click", () => {
-  const value = Math.floor(Math.random() * 10);
-  store.dispatch(rnd(value));
-});
+// const { inc, dec, rnd } = bindActionCreators(actions, dispatch);
 
-const update = () => {
-  document.getElementById("counter").textContent = store.getState();
-};
+// const update = () => {
+  ReactDOM.render(
+    <Provider store={store}>
+      <App />
+    </Provider>,
+    document.getElementById("root")
+  );
+// };
 
-store.subscribe(update);
+// update();
+
+// subscribe(update);
+
+// const decDispatch = bindActionCreators(dec, dispatch)
+// const rndDispatch = bindActionCreators(rnd, dispatch)
+
+// const incDispatch = () => dispatch(inc());
+// const decDispatch = () => dispatch(dec());
+// const rndDispatch = (value) => dispatch(rnd(value));
+
+// document.getElementById("inc").addEventListener("click", incDispatch);
+
+// document.getElementById("dec").addEventListener("click", decDispatch);
+
+// document.getElementById("rnd").addEventListener("click", () => {
+//   const value = Math.floor(Math.random() * 10);
+//   rndDispatch(value);
+// });
+
+// document.getElementById("inc").addEventListener("click", inc);
+
+// document.getElementById("dec").addEventListener("click", dec);
+
+// document.getElementById("rnd").addEventListener("click", () => {
+//   const value = Math.floor(Math.random() * 10);
+//   rnd(value);
+// });
+
+// const update = () => {
+//   document.getElementById("counter").textContent = getState();
+// };
+
+// subscribe(update);
 
 // =========================
 
