@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/components/counter.css"],"names":[],"mappings":"AAAA,MACE,YAAa,CACb,kBAAmB,CACnB,iBAAkB,CAClB,gBACF,CAEA,KACE,YACF","file":"main.b05329af.chunk.css","sourcesContent":[".page {\n  display: grid;\n  place-items: center;\n  text-align: center;\n  min-height: 100vh;\n}\n\n.btn {\n  margin: 0 2px;\n}\n"]}
